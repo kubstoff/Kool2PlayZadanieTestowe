@@ -25,13 +25,13 @@ public class PlayerMovementScript : MonoBehaviour
     void Update()
     {
         Vector3 movement = new Vector3(Input.GetAxis("Horizontal"),0,Input.GetAxis("Vertical"));
-        print(movement);
+        //print(movement);
         controller.Move(Time.deltaTime * movement * playerSpeed  ); 
         
         
          ray = Camera.main.ScreenPointToRay(Input.mousePosition);
          Debug.DrawLine(hit.point, transform.position,Color.red);
-         print(hit.point);
+         //print(hit.point);
          if (Physics.Raycast(ray, out hit,50,mask))
          {
              transform.LookAt(new Vector3(hit.point.x,transform.position.y,hit.point.z));
