@@ -1,0 +1,13 @@
+﻿# Default ignored files
+/shelf/
+/workspace.xml
+# Rider ignored files
+/modules.xml
+/projectSettingsUpdater.xml
+/.idea.ZadanieRekrutacyjneKool2Play.iml
+/contentModel.xml
+# Datasource local storage ignored files
+/../../../../../:\ZadanieRekrutacyjneKool2Play\.idea\.idea.ZadanieRekrutacyjneKool2Play\.idea/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/
