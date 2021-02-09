@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 7249259212543989154}
   - component: {fileID: 497117369048729954}
   - component: {fileID: 944681521076071527}
+  - component: {fileID: 585384601967924039}
+  - component: {fileID: 3746287223130317667}
   m_Layer: 0
   m_Name: GrenadeProjectile
   m_TagString: Untagged
@@ -94,13 +96,13 @@ Rigidbody:
   m_GameObject: {fileID: 4281110352706214524}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 0.3
   m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 1
 --- !u!65 &944681521076071527
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -112,5 +114,32 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.88, y: 2.27, z: 2.28}
+  m_Size: {x: 1.8876622, y: 2.27, z: 2.28}
+  m_Center: {x: 0.0051458552, y: 0.16746148, z: 0.087004006}
+--- !u!135 &585384601967924039
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4281110352706214524}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 19.63
   m_Center: {x: 0.0013155341, y: 0.16746151, z: 0.087004006}
+--- !u!114 &3746287223130317667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4281110352706214524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a114811eeb063c746b42e5f1706e78c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 2
+  particles: {fileID: 2144167991287059992, guid: 033ad8517485df541b31d9a47acee675, type: 3}
