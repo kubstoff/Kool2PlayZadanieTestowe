@@ -30,9 +30,9 @@ public class PlayerMovementScript : MonoBehaviour
         
         
          ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-         Debug.DrawLine(hit.point, transform.position,Color.red);
+         //Debug.DrawLine(hit.point, transform.position,Color.red);
          //print(hit.point);
-         if (Physics.Raycast(ray, out hit,50,mask))
+         if (Physics.Raycast(ray, out hit,50,mask.value))
          {
              transform.LookAt(new Vector3(hit.point.x,transform.position.y,hit.point.z));
              

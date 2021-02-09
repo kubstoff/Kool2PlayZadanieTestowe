@@ -5,21 +5,20 @@ using UnityEngine;
 public class Shotgun : MonoBehaviour,WeaponInterface
 {
 
-    public GameObject shootPoint;
+    public GameObject shootCone;
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+  
 
     public void shoot(Vector3 target)
     {
-        
+        shootCone.SetActive(true);
+        StartCoroutine( disableConeAfterTime(0.3f));
     }
 
     // Update is called once per frame
-    void Update()
+    IEnumerator disableConeAfterTime(float seconds)
     {
-        print("fdf");
+        yield return new WaitForSeconds(seconds);
+        shootCone.SetActive(false);
     }
 }

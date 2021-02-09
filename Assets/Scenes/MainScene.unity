@@ -214,13 +214,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
-  m_LocalRotation: {x: 0.54271096, y: 0.68067706, z: -0.04360544, w: 0.49014518}
+  m_LocalRotation: {x: 0.22158775, y: -0.3553358, z: 0.6868123, w: 0.59407425}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 36.255, y: 129.757, z: 59.677}
+  m_LocalEulerAnglesHint: {x: 48.71, y: -10.285, z: 93.617}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -363,7 +363,7 @@ GameObject:
   - component: {fileID: 1510485048}
   - component: {fileID: 1510485047}
   - component: {fileID: 1510485046}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GroundPlane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -456,7 +456,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6081577752139871851, guid: cee344f8d0cc4bb468165e865201ec93, type: 3}
       propertyPath: mask.m_Bits
-      value: 55
+      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 6081577752139871851, guid: cee344f8d0cc4bb468165e865201ec93, type: 3}
       propertyPath: playerSpeed
