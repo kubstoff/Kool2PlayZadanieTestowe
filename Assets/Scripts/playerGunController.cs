@@ -13,7 +13,7 @@ public class playerGunController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            playerWeapon[current].GetComponent<WeaponInterface>().shoot(new Vector3(0f,0f,0f));
+            playerWeapon[current].GetComponent<WeaponInterface>().shoot(GetComponent<PlayerMovementScript>().mouseTarget );
         }
 
         if (Input.mouseScrollDelta.y != 0)

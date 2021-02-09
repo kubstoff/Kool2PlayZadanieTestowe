@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
@@ -10,6 +11,11 @@ public class Bullet : MonoBehaviour
 
     public float speed;
 
+    private void Start()
+    {
+        Destroy(this.gameObject,3);
+    }
+
     public void initialize(Vector3 vec){
     
     direction = vec;
@@ -21,7 +27,7 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         transform.position += direction * speed;
-
-
     }
+    
+    
 }

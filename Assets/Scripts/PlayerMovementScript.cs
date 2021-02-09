@@ -10,6 +10,7 @@ public class PlayerMovementScript : MonoBehaviour
     //public
     public float playerSpeed=10;
     public LayerMask mask;
+    public Vector3 mouseTarget;
     
     private CharacterController controller;
     private Ray ray;
@@ -34,12 +35,16 @@ public class PlayerMovementScript : MonoBehaviour
          //print(hit.point);
          if (Physics.Raycast(ray, out hit,50,mask.value))
          {
-             transform.LookAt(new Vector3(hit.point.x,transform.position.y,hit.point.z));
+             mouseTarget = new Vector3(hit.point.x, transform.position.y, hit.point.z);
+             transform.LookAt(mouseTarget);
              
          }
             
 
     }
 
-   
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawSphere(mouseTarget,0.5f);
+    }
 }

@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 1523161781491568667}
   - component: {fileID: 2983803868680348692}
   - component: {fileID: 7249259212543989154}
-  - component: {fileID: 1022200117284330458}
+  - component: {fileID: 497117369048729954}
+  - component: {fileID: 944681521076071527}
   m_Layer: 0
-  m_Name: Grenade
+  m_Name: GrenadeProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84,16 +85,32 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &1022200117284330458
-MonoBehaviour:
+--- !u!54 &497117369048729954
+Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4281110352706214524}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 2
+--- !u!65 &944681521076071527
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4281110352706214524}
+  m_Material: {fileID: 13400000, guid: 4ff823b52cd36e04792c98d47ef33c27, type: 2}
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07fa5a28dba369a48a18e07a8ed67d5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  throwGrenade: {fileID: 4281110352706214524, guid: ccaeca549509d1f4eae630978b0f59bb, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 1.88, y: 2.27, z: 2.28}
+  m_Center: {x: 0.0013155341, y: 0.16746151, z: 0.087004006}
