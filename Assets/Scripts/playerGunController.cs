@@ -8,6 +8,9 @@ public class playerGunController : MonoBehaviour
     public GameObject WeaponSlot;
     public GameObject[] playerWeapon;
     public int current;
+    public WeaponInterface weaponinterface;
+
+    private PlayerMovementScript _playerMovementScript; 
     
     void Update()
     {

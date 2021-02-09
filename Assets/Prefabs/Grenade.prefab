@@ -97,3 +97,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwGrenade: {fileID: 4281110352706214524, guid: ccaeca549509d1f4eae630978b0f59bb, type: 3}
+  grenadeFlightTime: 4.88
