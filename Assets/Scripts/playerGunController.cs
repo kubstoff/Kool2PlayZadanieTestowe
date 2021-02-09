@@ -10,13 +10,19 @@ public class playerGunController : MonoBehaviour
     public int current;
     public WeaponInterface weaponinterface;
 
-    private PlayerMovementScript _playerMovementScript; 
-    
+    private PlayerMovementScript _playerMovementScript;
+
+
+    private void Start()
+    {
+        _playerMovementScript = GetComponent<PlayerMovementScript>();
+    }
+
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            playerWeapon[current].GetComponent<WeaponInterface>().shoot(GetComponent<PlayerMovementScript>().mouseTarget );
+            playerWeapon[current].GetComponent<WeaponInterface>().shoot(_playerMovementScript.mouseTarget );
         }
 
         if (Input.mouseScrollDelta.y != 0)
