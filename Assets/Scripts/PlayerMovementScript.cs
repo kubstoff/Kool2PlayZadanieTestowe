@@ -35,18 +35,11 @@ public class PlayerMovementScript : MonoBehaviour
          if (Physics.Raycast(ray, out hit,50,mask))
          {
              transform.LookAt(new Vector3(hit.point.x,transform.position.y,hit.point.z));
-             //transform.rotation.y = 0;
-             //transform.rotation = new Quaternion(transform.rotation)
-             //Vector3 newRotation = new Vector3(transform.rotation);
-
-
+             
          }
             
 
     }
 
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.DrawSphere(hit.point,0.5f);
-    }
+   
 }
