@@ -38,7 +38,7 @@ public class playerGunController : MonoBehaviour
             {
                 current = playerWeapon.Length-1;
             }
-            
+            PlayerStats.Instance.currentWeaponID = current;
             for (int i = 0; i < playerWeapon.Length; i++)
             {
                 if (i == current)

@@ -10,7 +10,7 @@ public class PlayerStats : MonoBehaviour
    public float playerHealth;
    public float playerMaxHealth;
    public int enemiesKilled;
-
+   public int currentWeaponID;
    
    private void Awake()
    {
