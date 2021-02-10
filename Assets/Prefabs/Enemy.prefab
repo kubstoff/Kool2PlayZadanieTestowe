@@ -122,7 +122,6 @@ GameObject:
   - component: {fileID: 4666843918527839564}
   - component: {fileID: 8640949369812332198}
   - component: {fileID: 5980410542440057341}
-  - component: {fileID: 5216007274932454607}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -193,19 +192,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5216007274932454607
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1860414022343869789}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2405756854086939436
 GameObject:
   m_ObjectHideFlags: 0
@@ -217,7 +203,6 @@ GameObject:
   - component: {fileID: 5083479713894027800}
   - component: {fileID: 9214934531489207201}
   - component: {fileID: 1648452210318730331}
-  - component: {fileID: 5115425378216496930}
   m_Layer: 0
   m_Name: Cube (1)
   m_TagString: Untagged
@@ -288,19 +273,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5115425378216496930
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2405756854086939436}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4607216160516311839
 GameObject:
   m_ObjectHideFlags: 0
@@ -592,6 +564,7 @@ GameObject:
   - component: {fileID: 4884880668171081456}
   - component: {fileID: 4205367454327512071}
   - component: {fileID: 2849184956296218020}
+  - component: {fileID: 1292409465121182741}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -715,3 +688,18 @@ MonoBehaviour:
   slider: {fileID: 4230989728137006681}
   checktag: Player
   enemySpeed: 3.3
+  damage: 5
+  breakFromAttack: 1
+--- !u!65 &1292409465121182741
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8057577008605674192}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.81, y: 0.25, z: 0.95}
+  m_Center: {x: 0, y: 0.32, z: 0.78}
