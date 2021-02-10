@@ -23,6 +23,6 @@ public class Grenade : MonoBehaviour, WeaponInterface
             
             rb.velocity = throwVector;
     }
-
+    
     
 }

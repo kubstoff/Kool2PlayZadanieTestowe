@@ -109,6 +109,7 @@ GameObject:
   - component: {fileID: 1271201516116809743}
   - component: {fileID: 3909309758615764243}
   - component: {fileID: 6792409179897941235}
+  - component: {fileID: 3140017982193761670}
   m_Layer: 0
   m_Name: ShootCone
   m_TagString: Untagged
@@ -193,3 +194,15 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &3140017982193761670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7536573925900642826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb24bcd7367926e40a4281e4566d6351, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
@@ -13,14 +14,24 @@ public class ExplodeAfterTime : MonoBehaviour
         StartCoroutine(Explode( delay));
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            other.GetComponent<EnemyAI>().TakeDamage(300);
+        }
+      
+    
+    }
+
     IEnumerator Explode(float seconds)
     {
         yield return new WaitForSeconds(seconds);
         GameObject explosion = Instantiate(particles,transform.position,quaternion.identity);
         GetComponent<SphereCollider>().enabled = true;
         print("boom");
-        Destroy(this.gameObject,0.1f);
-        
         Destroy(explosion,2 );
+        Destroy(this.gameObject,0.1f);
+     
     }
 }

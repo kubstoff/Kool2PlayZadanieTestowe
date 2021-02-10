@@ -23,11 +23,20 @@ public class Bullet : MonoBehaviour
 
     }
 
+  
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        transform.position += direction * speed;
+        transform.position += direction * speed  ;
     }
-    
-    
+
+  
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            other.GetComponent<EnemyAI>().TakeDamage(34);
+        }
+        Destroy(this.gameObject);
+    }
 }

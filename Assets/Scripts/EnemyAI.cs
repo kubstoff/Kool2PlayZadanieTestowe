@@ -9,7 +9,7 @@ public class EnemyAI : EnemyClass
 {
     //public GameObject follow;
     //public string followThisName;
-    public string tag;
+    public string checktag;
     public float enemySpeed = 3.3f;
     
     private GameObject follow;
@@ -20,7 +20,7 @@ public class EnemyAI : EnemyClass
     private void Start()
     {
         enemyController = GetComponent<CharacterController>();
-        follow = GameObject.FindWithTag(tag);
+        follow = GameObject.FindWithTag(checktag);
 
     }
 
@@ -29,7 +29,11 @@ public class EnemyAI : EnemyClass
         direction = (follow.transform.position - transform.position).normalized;
         enemyController.Move(Time.deltaTime * enemySpeed * direction);
         transform.LookAt(new Vector3(follow.transform.position.x,transform.position.y,follow.transform.position.z));
-       
+
+        if (isDead)
+        {
+            Destroy(this.gameObject);
+        }
 
     }
 }
