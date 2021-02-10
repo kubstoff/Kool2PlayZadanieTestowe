@@ -2,17 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shotgun : MonoBehaviour,WeaponInterface
+public class Shotgun : MonoBehaviour, WeaponInterface
 {
-
     public GameObject shootCone;
-    // Start is called before the first frame update
-  
+    public float coneLifetime=0.1f;
 
     public void shoot(Vector3 target)
     {
         shootCone.SetActive(true);
-        StartCoroutine( disableConeAfterTime(0.3f));
+        StartCoroutine(disableConeAfterTime(coneLifetime));
     }
 
     // Update is called once per frame

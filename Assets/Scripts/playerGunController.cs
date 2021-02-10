@@ -8,7 +8,7 @@ public class playerGunController : MonoBehaviour
     public GameObject WeaponSlot;
     public GameObject[] playerWeapon;
     public int current;
-   
+
     private PlayerMovementScript _playerMovementScript;
 
 
@@ -21,45 +21,41 @@ public class playerGunController : MonoBehaviour
     {
         WeaponSlot.transform.LookAt(_playerMovementScript.mouseTarget);
         
-        if (Input.GetMouseButtonDown(0))
+        if (PlayerStats.Instance.isAlive)
         {
-            playerWeapon[current].GetComponent<WeaponInterface>().shoot(_playerMovementScript.mouseTarget );
-        }
-
-        if (Input.mouseScrollDelta.y != 0)
-        {
-            current += (int)Input.mouseScrollDelta.y;
-            
-            if (current > playerWeapon.Length-1)
+            if (Input.GetMouseButtonDown(0))
             {
-                current = 0;
-            }
-            if (current < 0)
-            {
-                current = playerWeapon.Length-1;
-            }
-            PlayerStats.Instance.currentWeaponID = current;
-            for (int i = 0; i < playerWeapon.Length; i++)
-            {
-                if (i == current)
-                {
-                    playerWeapon[i].SetActive(true);
-                }
-                else
-                {
-                    playerWeapon[i].SetActive(false);
-                }
+                playerWeapon[current].GetComponent<WeaponInterface>().shoot(_playerMovementScript.mouseTarget);
             }
 
-            
-            print(Input.mouseScrollDelta.y);
+            if (Input.mouseScrollDelta.y != 0)
+            {
+                current += (int) Input.mouseScrollDelta.y;
+
+                if (current > playerWeapon.Length - 1)
+                {
+                    current = 0;
+                }
+
+                if (current < 0)
+                {
+                    current = playerWeapon.Length - 1;
+                }
+
+                PlayerStats.Instance.currentWeaponID = current;
+                for (int i = 0; i < playerWeapon.Length; i++)
+                {
+                    if (i == current)
+                    {
+                        playerWeapon[i].SetActive(true);
+                    }
+                    else
+                    {
+                        playerWeapon[i].SetActive(false);
+                    }
+                }
+            }
         }
         
-
     }
-    
-    
-    
-    
-    
 }

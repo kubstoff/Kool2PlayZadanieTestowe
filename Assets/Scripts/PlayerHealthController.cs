@@ -17,11 +17,14 @@ public class PlayerHealthController : MonoBehaviour
 
     public void takeDamage(float dmg)
     {
-
         Health -= dmg;
 
         PlayerStats.Instance.playerHealth = Health;
 
+        if (Health <= 0)
+        {
+            GetComponent<CharacterController>().enabled = false;
+            PlayerStats.Instance.isAlive = false;
+        }
     }
-    
 }

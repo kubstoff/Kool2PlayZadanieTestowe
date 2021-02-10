@@ -6,23 +6,27 @@ using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
-
     public Text[] textfields;
     public Sprite[] textures;
     public Image selectedWeapon;
+    public GameObject deathScreen;
     public Slider HP;
-    
-    
+
+    private bool doOnce = true;
 
 
     private void Update()
     {
-        HP.value = PlayerStats.Instance.playerHealth/PlayerStats.Instance.playerMaxHealth;
+        HP.value = PlayerStats.Instance.playerHealth / PlayerStats.Instance.playerMaxHealth;
 
         textfields[1].text = PlayerStats.Instance.enemiesKilled.ToString();
-        
+
         selectedWeapon.sprite = textures[PlayerStats.Instance.currentWeaponID];
 
-
+        if (!PlayerStats.Instance.isAlive && doOnce)
+        {
+            doOnce = false;
+            deathScreen.SetActive(true);
+        }
     }
 }
