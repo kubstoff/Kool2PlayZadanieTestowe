@@ -4,7 +4,13 @@ using UnityEngine;
 
 public interface EnemyInterface
 {
-    void dealDamage();
-    void applyEffect(int effectID);
+    public float Health { get; set; }
+    public float Walkspeed { get; set; }
+
+    public bool isDead { get; set; }
+
+
+    void ApplyDamage(float dmg);
+
 
 }

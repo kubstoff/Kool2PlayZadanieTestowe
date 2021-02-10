@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
@@ -13,6 +14,8 @@ public class Pistol : MonoBehaviour,WeaponInterface
     {
         bullet.GetComponent<Bullet>().speed = bulletSpeed;
     }
+
+    
 
     public void shoot(Vector3 target)
     {

@@ -8,8 +8,7 @@ public class playerGunController : MonoBehaviour
     public GameObject WeaponSlot;
     public GameObject[] playerWeapon;
     public int current;
-    public WeaponInterface weaponinterface;
-
+   
     private PlayerMovementScript _playerMovementScript;
 
 
@@ -20,6 +19,8 @@ public class playerGunController : MonoBehaviour
 
     void Update()
     {
+        WeaponSlot.transform.LookAt(_playerMovementScript.mouseTarget);
+        
         if (Input.GetMouseButtonDown(0))
         {
             playerWeapon[current].GetComponent<WeaponInterface>().shoot(_playerMovementScript.mouseTarget );

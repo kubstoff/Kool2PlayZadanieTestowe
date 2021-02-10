@@ -27,7 +27,7 @@ public class PlayerMovementScript : MonoBehaviour
     {
         Vector3 movement = new Vector3(Input.GetAxis("Horizontal"),0,Input.GetAxis("Vertical"));
         //print(movement);
-        controller.Move(Time.deltaTime * movement * playerSpeed  ); 
+        controller.Move(Time.deltaTime * playerSpeed * movement  ); 
         
         
          ray = Camera.main.ScreenPointToRay(Input.mousePosition);
