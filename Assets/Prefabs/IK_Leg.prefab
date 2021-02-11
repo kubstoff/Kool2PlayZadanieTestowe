@@ -13,10 +13,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chainLength: 4
-  Target: {fileID: 0}
-  Base: {fileID: 0}
-  iterations: 0
-  delta: 0
+  targetObject: {fileID: 6319377801040424744}
+  _base: {fileID: 809845017638794719}
+  iterations: 10
+  delta: 0.05
+  rotationOffset: {x: 0, y: 0, z: 0}
+  applyTransforms: 0
 --- !u!1 &6319377801040424744
 GameObject:
   m_ObjectHideFlags: 0
@@ -41,7 +43,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6319377801040424744}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -9.22, y: 1.82, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5455125819071529554}
@@ -139,6 +141,11 @@ PrefabInstance:
 --- !u!4 &8004834941151491358 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9430cc420eb75ee4b86061e39f9d3571, type: 3}
+  m_PrefabInstance: {fileID: 7538000528035631861}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &809845017638794719 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7179158139332175658, guid: 9430cc420eb75ee4b86061e39f9d3571, type: 3}
   m_PrefabInstance: {fileID: 7538000528035631861}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &3859580317292614060 stripped
