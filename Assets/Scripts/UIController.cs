@@ -12,7 +12,7 @@ public class UIController : MonoBehaviour
     public GameObject deathScreen;
     public Slider hp;
 
-    private bool doOnce = true;
+    private bool _doOnce = true;
 
 
     private void Update()
@@ -23,9 +23,9 @@ public class UIController : MonoBehaviour
 
         selectedWeapon.sprite = textures[PlayerStats.Instance.currentWeaponID];
 
-        if (!PlayerStats.Instance.isAlive && doOnce)
+        if (!PlayerStats.Instance.isAlive && _doOnce)
         {
-            doOnce = false;
+            _doOnce = false;
             deathScreen.SetActive(true);
         }
     }

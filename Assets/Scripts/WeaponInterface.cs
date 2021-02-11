@@ -4,6 +4,6 @@ using UnityEngine;
 
 public interface WeaponInterface
 {
-    public void shoot(Vector3 target);
+    public void Shoot(Vector3 target);
     
 }

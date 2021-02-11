@@ -18,9 +18,8 @@ public class Pistol : MonoBehaviour, WeaponInterface
     }
 
 
-    public void shoot(Vector3 target)
+    public void Shoot(Vector3 target)
     {
-        //print("wigwam");
         GameObject b = Instantiate<GameObject>(bullet, shootPoint.transform.position, quaternion.identity);
         b.GetComponent<Bullet>().Initialize(shootPoint.transform.up);
     }

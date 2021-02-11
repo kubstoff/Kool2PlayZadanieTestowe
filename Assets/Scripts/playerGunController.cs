@@ -26,7 +26,7 @@ public class playerGunController : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                playerWeapon[current].GetComponent<WeaponInterface>().shoot(_playerMovementScript.mouseTarget);
+                playerWeapon[current].GetComponent<WeaponInterface>().Shoot(_playerMovementScript.mouseTarget);
             }
 
             if (Input.mouseScrollDelta.y != 0)

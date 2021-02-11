@@ -8,7 +8,7 @@ public class Grenade : MonoBehaviour, WeaponInterface
     public GameObject throwGrenade;
     
 
-    public void shoot(Vector3 target)
+    public void Shoot(Vector3 target)
     {
         
         Vector3 throwVector = new Vector3(
