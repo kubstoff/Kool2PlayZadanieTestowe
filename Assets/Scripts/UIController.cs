@@ -10,14 +10,14 @@ public class UIController : MonoBehaviour
     public Sprite[] textures;
     public Image selectedWeapon;
     public GameObject deathScreen;
-    public Slider HP;
+    public Slider hp;
 
     private bool doOnce = true;
 
 
     private void Update()
     {
-        HP.value = PlayerStats.Instance.playerHealth / PlayerStats.Instance.playerMaxHealth;
+        hp.value = PlayerStats.Instance.playerHealth / PlayerStats.Instance.playerMaxHealth;
 
         textfields[1].text = PlayerStats.Instance.enemiesKilled.ToString();
 

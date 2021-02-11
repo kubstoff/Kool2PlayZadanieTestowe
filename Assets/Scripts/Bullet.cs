@@ -16,7 +16,7 @@ public class Bullet : MonoBehaviour
         Destroy(this.gameObject, 3);
     }
 
-    public void initialize(Vector3 vec)
+    public void Initialize(Vector3 vec)
     {
         direction = vec;
         transform.rotation = Quaternion.LookRotation(vec);

@@ -12,14 +12,14 @@ public class PlayerMovementScript : MonoBehaviour
     public LayerMask mask;
     public Vector3 mouseTarget;
 
-    private CharacterController controller;
-    private Ray ray;
-    private RaycastHit hit;
+    private CharacterController _controller;
+    private Ray _ray;
+    private RaycastHit _hit;
 
 
     void Start()
     {
-        controller = GetComponent<CharacterController>();
+        _controller = GetComponent<CharacterController>();
     }
 
     void Update()
@@ -28,13 +28,13 @@ public class PlayerMovementScript : MonoBehaviour
         {
             Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
-            controller.Move(Time.deltaTime * playerSpeed * movement);
+            _controller.Move(Time.deltaTime * playerSpeed * movement);
 
-            ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            _ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.Raycast(ray, out hit, 50, mask.value))
+            if (Physics.Raycast(_ray, out _hit, 50, mask.value))
             {
-                mouseTarget = new Vector3(hit.point.x, transform.position.y, hit.point.z);
+                mouseTarget = new Vector3(_hit.point.x, transform.position.y, _hit.point.z);
                 transform.LookAt(mouseTarget);
             }
         }

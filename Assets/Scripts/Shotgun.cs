@@ -10,11 +10,11 @@ public class Shotgun : MonoBehaviour, WeaponInterface
     public void shoot(Vector3 target)
     {
         shootCone.SetActive(true);
-        StartCoroutine(disableConeAfterTime(coneLifetime));
+        StartCoroutine(DisableConeAfterTime(coneLifetime));
     }
 
     // Update is called once per frame
-    IEnumerator disableConeAfterTime(float seconds)
+    IEnumerator DisableConeAfterTime(float seconds)
     {
         yield return new WaitForSeconds(seconds);
         shootCone.SetActive(false);

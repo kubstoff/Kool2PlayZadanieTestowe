@@ -2,10 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class playerGunController : MonoBehaviour
 {
-    public GameObject WeaponSlot;
+    public GameObject weaponSlot;
     public GameObject[] playerWeapon;
     public int current;
 
@@ -19,7 +20,7 @@ public class playerGunController : MonoBehaviour
 
     void Update()
     {
-        WeaponSlot.transform.LookAt(_playerMovementScript.mouseTarget);
+        weaponSlot.transform.LookAt(_playerMovementScript.mouseTarget);
         
         if (PlayerStats.Instance.isAlive)
         {

@@ -46,11 +46,11 @@ public class EnemyAI : EnemyClass
         {
             other.GetComponent<PlayerHealthController>().takeDamage(5);
             _collider.enabled = false;
-            StartCoroutine(enableAfter(breakFromAttack));
+            StartCoroutine(EnableAfter(breakFromAttack));
         }
     }
 
-    private IEnumerator enableAfter(float seconds)
+    private IEnumerator EnableAfter(float seconds)
     {
         yield return new WaitForSeconds(seconds);
         _collider.enabled = true;

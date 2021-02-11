@@ -7,6 +7,7 @@ public class CameraMovement : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject follow;
+    
     private Vector3 offset;
 
 

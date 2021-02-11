@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public GameObject spawnable;
+    public GameObject spawnableObject;
     public int spawnMinAtOnce = 0;
     public int spawnMaxAtOnce = 10;
     public int maxAmountOfObjects = 70;
@@ -14,7 +14,7 @@ public class EnemySpawner : MonoBehaviour
     public Vector3 min;
     public Vector3 max;
     
-    void Start()
+    private void Start()
     {
         StartCoroutine (Timer(timerCycleSeconds));    
     }
@@ -28,7 +28,7 @@ public class EnemySpawner : MonoBehaviour
         );
     }
     
-    IEnumerator Timer(float seconds)
+    private IEnumerator Timer(float seconds)
     {
         while(true)
         {
@@ -36,7 +36,7 @@ public class EnemySpawner : MonoBehaviour
             {
                 for (int i = -spawnMinAtOnce; i < spawnMaxAtOnce; i++)
                 {
-                    GameObject enemy = Instantiate(spawnable, randomVec3InRange(min, max), Quaternion.identity);
+                    GameObject enemy = Instantiate(spawnableObject, randomVec3InRange(min, max), Quaternion.identity);
                     enemy.transform.SetParent(this.gameObject.transform);
                 }
             }
