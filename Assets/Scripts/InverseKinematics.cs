@@ -1,175 +1,180 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditorInternal;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
-
+using UnityEditor;
+using UnityEngine.UI;
 
 public class InverseKinematics : MonoBehaviour
 {
+    //public
+    public int chainLength = 3;
+    public Transform target;
+    public Transform pole;
 
-    public int chainLength;
-    public GameObject targetObject;
-    public GameObject _base;
+    public int iterations;
+    public float delta;
 
-    public int iterations=10;
-    public float delta=0.05f;
-    public Vector3 rotationOffset;
-    public bool applyTransforms=false;
     
-    
-    private float[] boneLength;
-    private float totalLength;
+    //private
+    private float[] BonesLength;
+    private float completeLength;
     private Transform[] Bones;
-    private Vector3[] jointPositions;
-    private Vector3 worldOffset;
-    private Vector3 target;
+    private Vector3[] Positions;
 
     private void Awake()
     {
-        boneLength = new float[chainLength-1];
-        jointPositions = new Vector3[chainLength];
-        
-        InitIK();
+        Init();
     }
 
-    
     private void LateUpdate()
     {
-        if(applyTransforms){
-            InitIK();
-            applyTransforms = false;
-        }
-        //worldOffset = base.transform.position;
-        CalculateIK();
-        ApplyToMesh();
+        SolveIK();
     }
 
-    private void CalculateIK()
-    {
-        if (Vector3.Distance(targetObject.transform.position, _base.transform.position) > totalLength)
-        {
-            target = (targetObject.transform.position - _base.transform.position).normalized * totalLength + _base.transform.position;
-        }
-        else
-        {
-            target = targetObject.transform.position;
-        }
-        
-
-        for (int k = 0; k < iterations;k++) {
-            
-            if(Vector3.Distance( target,jointPositions[jointPositions.Length - 1]) < delta){ break;}
-
-                //forwards
-            for (int i = jointPositions.Length - 1; i > 0; i--)
-            {
-
-
-                if (i == jointPositions.Length - 1)
-                {
-
-                    jointPositions[i] = target;
-                    print("wigwam" + i);
-                }
-                else
-                {
-                    print("pingwin" + i);
-                    //
-                    jointPositions[i] = jointPositions[i + 1] +
-                                        (jointPositions[i] - jointPositions[i + 1]).normalized * boneLength[i - 1];
-                }
-            }
-
-            //backwards
-            for (int i = 0; i < jointPositions.Length - 1; i++)
-            {
-
-
-                if (i == 0)
-                {
-                    jointPositions[i] = _base.transform.position;
-                    print("wigwam" + i);
-                }
-                else
-                {
-                    print("pingwin" + i);
-                    jointPositions[i] = jointPositions[i - 1] +
-                                        (jointPositions[i] - jointPositions[i - 1]).normalized * boneLength[i - 1];
-                }
-
-            }
-        }
-
-    }
-    
-    private void ApplyToMesh()
-    {
-        for (int i = 0; i < chainLength; i++)
-        {
-
-            Bones[i].position = jointPositions[jointPositions.Length-1 - i];
-            
-
-        }
-
-        for (int i = Bones.Length-1; i > 0; i--)
-        {
+     void SolveIK()
+     {
+         if ( target == null) {return;}
          
-            Bones[i].LookAt(Bones[i-1]);
-            Bones[i].Rotate(90,0,0 );
+
+         //getposition
+         for (int i = 0; i < Bones.Length; i++)
+         {
+             Positions[i] = Bones[i].position;
+         }
+
+         //check if out of range
+         if ((target.position - Bones[0].position).sqrMagnitude  > completeLength*completeLength)
+         {
+             Vector3 direction = (target.position - Positions[0]).normalized;
+
+             for (int i = 1; i < Positions.Length; i++)
+             {
+                 Positions[i] = Positions[i - 1] + direction * BonesLength[i - 1];
+             }
+  
+         }
+         else
+         {
+             for (int iteration = 0; iteration < iterations; iteration++)
+             {
+                 //back
+                 for (int i = Positions.Length-1; i >0; i--)
+                 {
+                     if (i == Positions.Length - 1)
+                     {
+                         Positions[i] = target.position;
+                     }
+                     else
+                     {
+                         Positions[i] = Positions[i + 1] +
+                                        (Positions[i] - Positions[i + 1]).normalized * BonesLength[i];
+                     }
+                     
+                 }
+                 
+                 //forth
+                 for (int i = 1; i < Positions.Length; i++)
+                 {
+                     Positions[i] = Positions[i - 1] +
+                                    (Positions[i] - Positions[i - 1]).normalized * BonesLength[i - 1];
+                 }
+
+                 if ((Positions[Positions.Length - 1] - target.position).magnitude < delta) {break;}
+
+
+             }
+         }
+
+         //pull
+         if (pole != null)
+         {
+             for (int i = 1; i < Positions.Length - 1; i++)
+             {
+                 Plane plane = new Plane(Positions[i + 1] - Positions[i - 1], Positions[i - 1]);
+                 
+                 Vector3 projectedPole = plane.ClosestPointOnPlane(pole.position);
+                 
+                 Vector3 projectedBone = plane.ClosestPointOnPlane(Positions[i]);
+                 
+                 float angle = Vector3.SignedAngle(projectedBone - Positions[i - 1], projectedPole - Positions[i - 1],
+                     plane.normal);
+                 
+                 Positions[i] = Quaternion.AngleAxis(angle, plane.normal) *
+                                (Positions[i] - Positions[i - 1]) + Positions[i - 1];
+
+             }
+         }
+         
+        
+         
+         //set rotation
+         for (int i = 0; i < Bones.Length-1; i++)
+         {
+         
+             Bones[i].LookAt(Bones[i+1]);
+                 //Bones[i].Rotate(90,0,0 );
           
-        }
-
-
+         }
+         
+         ///set position
+         for (int i = 0; i < Positions.Length; i++)
+         {
+             Bones[i].position = Positions[i];
+         }
+         
+         
     }
 
+     void Init()
+     {
+         Bones = new Transform[chainLength + 1];
+         Positions = new Vector3[chainLength + 1];
+         BonesLength = new float[chainLength];
+         completeLength = 0;
 
-    //use for debug only
-    /*private void OnDrawGizmos()
+         var current = transform;
+         for (var i = Bones.Length - 1; i >= 0; i--)
+         {
+
+             Bones[i] = current;
+
+             if (i == Bones.Length - 1)
+             {
+
+             }
+             else
+             {
+                 BonesLength[i] = (Bones[i + 1].position - current.position).magnitude;
+                 completeLength += BonesLength[i];
+
+
+                 current = current.parent;
+
+             }
+
+         }
+     }
+
+     //only for debug
+     /*
+     private void OnDrawGizmos()
     {
-        CalculateIK();
-        //ApplyToMesh();
-        for (int i = 0; i < jointPositions.Length-1 ; i++)
+        //Init(); 
+        //SolveIK(); //debug
+        
+        for (int i = 0; i < Positions.Length; i++)
         {
-            Gizmos.color = Color.red;
-            Gizmos.DrawSphere(jointPositions[i],0.2f);
-            Gizmos.color = Color.green;
-            Gizmos.DrawLine(jointPositions[i],jointPositions[i+1]);
+            Gizmos.color=Color.green;
+            Gizmos.DrawSphere(Positions[i],0.2f);
+            
         }
         
-    }*/
-
-    void InitIK()
-    {
-        Bones = new Transform[chainLength];
-        Transform current = this.transform;
-
-        for (int i = 0; i < chainLength; i++)
+        for (int i = 0; i < Positions.Length-1; i++)
         {
-
-            Bones[i] = current.transform;
-            current = current.transform.parent;
-
-        }
-
-        for (int i = 0; i < jointPositions.Length; i++)
-        {
-            jointPositions[i] = Bones[i].position;
-        }
-
-
-        for (int i = 0; i < boneLength.Length; i++)
-        {
-
-            boneLength[i] = Vector3.Distance(Bones[i].position, Bones[i + 1].position);
-            totalLength += boneLength[i];
-            print("init bone length " + i + " " + boneLength[i]); 
-
-        }
-        print("total length" + totalLength);
-
+            Gizmos.color=Color.red;
+            Gizmos.DrawLine(Positions[i],Positions[i+1]);           
+        } 
     }
-
+    */
 }
