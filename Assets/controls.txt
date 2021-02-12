@@ -1,0 +1,4 @@
+WSAD - Movement
+mouse - Look around
+Left click - Shoot/Throw grenade
+Scroll - Change weapon

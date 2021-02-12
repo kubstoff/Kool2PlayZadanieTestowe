@@ -50,10 +50,6 @@ public class IKManager : MonoBehaviour
         moveThis.position = Vector3.Lerp(previousPosition,currentPosition,x) ;
 
 
-
-
-
-
     }
     
     

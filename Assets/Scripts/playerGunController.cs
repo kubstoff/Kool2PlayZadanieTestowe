@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class playerGunController : MonoBehaviour
+public class PlayerGunController : MonoBehaviour
 {
     public GameObject weaponSlot;
     public GameObject[] playerWeapon;
