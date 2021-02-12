@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
 using  UnityEditor;
@@ -14,14 +15,16 @@ public class IKManager : MonoBehaviour
     public LayerMask mask;
     public float raycastLength;
     public float radius;
-    public float speed;
+    public float LerpSeconds;
     public float raiseY;
     
     private Ray ray;
     private Vector3 hitPosition;
     private Vector3 currentPosition;
     private Vector3 desiredPosition;
+    private Vector3 previousPosition;
     private float time=0;
+    private float x;
     
     // Start is called before the first frame update
     void Start()
@@ -33,16 +36,25 @@ public class IKManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        time += Time.deltaTime;
         Cast();
         if (Vector3.Distance(currentPosition, hitPosition) > radius)
         {
-            
-            desiredPosition = hitPosition;
-            
-            Move();
+
+            currentPosition = hitPosition;
+            previousPosition = moveThis.position;
+            time = 0;
+            //Move();
         }
-        
+
+        x = Mathf.Lerp(0,1,time/LerpSeconds);
+        moveThis.position = Vector3.Lerp(previousPosition,currentPosition,x) ;
+
+
+
+
+
+
     }
     
     
@@ -72,9 +84,10 @@ public class IKManager : MonoBehaviour
     {
         
         time += Time.deltaTime;
-        moveThis.position =Vector3.Lerp(currentPosition,desiredPosition,0.5f);
-        //currentPosition = moveThis.position;
+        moveThis.position = currentPosition; //Vector3.Lerp(currentPosition,desiredPosition,0.5f);
         
+        //currentPosition = moveThis.position;
+
     }
     
 
