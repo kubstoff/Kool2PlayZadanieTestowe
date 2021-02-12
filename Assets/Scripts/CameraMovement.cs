@@ -23,8 +23,7 @@ public class CameraMovement : MonoBehaviour
         offset = follow.transform.position - transform.position;
         transform.LookAt(follow.transform.position);
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         

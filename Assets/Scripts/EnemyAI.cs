@@ -8,8 +8,6 @@ using Random = System.Random;
 public class EnemyAI : EnemyClass
 
 {
-    //public GameObject follow;
-    //public string followThisName;
     public string checktag;
     public float enemySpeed = 3.3f;
     public float breakFromAttack = 1;
