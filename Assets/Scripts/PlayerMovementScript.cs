@@ -16,13 +16,13 @@ public class PlayerMovementScript : MonoBehaviour
     private CharacterController _controller;
     private Ray _ray;
     private RaycastHit _hit;
-    private IKMoveTargets moveRaycasters;
+   
 
 
     void Start()
     {
         _controller = GetComponent<CharacterController>();
-        moveRaycasters= GetComponent<IKMoveTargets>();
+       
     }
 
     void Update()
