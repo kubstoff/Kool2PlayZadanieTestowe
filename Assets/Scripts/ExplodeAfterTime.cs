@@ -11,6 +11,7 @@ public class ExplodeAfterTime : MonoBehaviour
     public GameObject particles;
 
     private SphereCollider _sphereCollider;
+    private bool _exploded = false;
     void Start()
     {
         StartCoroutine(Explode( delay));
@@ -21,10 +22,11 @@ public class ExplodeAfterTime : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            other.GetComponent<EnemyAI>().TakeDamage(300);
+            if (_exploded)
+            {
+                other.GetComponent<EnemyAI>().TakeDamage(300);
+            }
         }
-      
-    
     }
 
     IEnumerator Explode(float seconds)
@@ -32,6 +34,7 @@ public class ExplodeAfterTime : MonoBehaviour
         yield return new WaitForSeconds(seconds);
         GameObject explosion = Instantiate(particles,transform.position,quaternion.identity);
         _sphereCollider.enabled = true;
+        _exploded = true;
 
         Destroy(explosion,2 );
         Destroy(this.gameObject,0.1f);
