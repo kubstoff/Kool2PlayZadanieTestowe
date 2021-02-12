@@ -14,10 +14,11 @@ public class IKManager : MonoBehaviour
     public Transform moveThis;
     public LayerMask mask;
     public float raycastLength;
+    public Transform radiusCenter;
     public float radius;
     public float LerpSeconds;
-    public float raiseY;
-    
+
+
     private Ray ray;
     private Vector3 hitPosition;
     private Vector3 currentPosition;
@@ -26,25 +27,23 @@ public class IKManager : MonoBehaviour
     private float time=0;
     private float x;
     
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         Cast();
-        currentPosition = hitPosition;
+        currentPosition = hitPosition*10;
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         time += Time.deltaTime;
         Cast();
-        if (Vector3.Distance(currentPosition, hitPosition) > radius)
+        if (Vector3.Distance(currentPosition, radiusCenter.position) > radius)
         {
-
+            //print("wigwam");
             currentPosition = hitPosition;
             previousPosition = moveThis.position;
             time = 0;
-            //Move();
+            
         }
 
         x = Mathf.Lerp(0,1,time/LerpSeconds);
@@ -100,6 +99,7 @@ public class IKManager : MonoBehaviour
         Gizmos.DrawSphere(hitPosition,0.1f);
         Gizmos.color = Color.magenta;
         Gizmos.DrawSphere(currentPosition,0.1f);
-        
+        Gizmos.color = new Color(0.6f,0.96f,0.7f,0.09f);
+        Gizmos.DrawSphere(radiusCenter.position,radius);
     }
 }

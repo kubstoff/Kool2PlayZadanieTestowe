@@ -11,6 +11,7 @@ public class InverseKinematics : MonoBehaviour
     public int chainLength = 3;
     public Transform target;
     public Transform pole;
+   
 
     public int iterations;
     public float delta;
