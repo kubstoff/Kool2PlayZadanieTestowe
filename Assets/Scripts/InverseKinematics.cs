@@ -91,6 +91,7 @@ public class InverseKinematics : MonoBehaviour
          {
              for (int i = 1; i < Positions.Length - 1; i++)
              {
+                 
                  Plane plane = new Plane(Positions[i + 1] - Positions[i - 1], Positions[i - 1]);
                  
                  Vector3 projectedPole = plane.ClosestPointOnPlane(pole.position);
@@ -113,8 +114,6 @@ public class InverseKinematics : MonoBehaviour
          {
          
              Bones[i].LookAt(Bones[i+1]);
-                 //Bones[i].Rotate(90,0,0 );
-          
          }
          
          ///set position
@@ -156,7 +155,7 @@ public class InverseKinematics : MonoBehaviour
          }
      }
 
-     //only for debug
+     //uncomment only for debug
      /*
      private void OnDrawGizmos()
     {
